@@ -82,6 +82,37 @@ $ mau deploy
 
 With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
+### Production Build
+
+Follow these steps to set up and run the production environment:
+
+1. Create a production environment configuration file:
+
+   ```bash
+   touch .env.prod
+   ```
+
+2. Populate the `.env.prod` file with the required environment variables for production. Ensure you use secure and appropriate values for the production environment.
+
+3. Build the Docker image for production by running:
+
+   ```bash
+   docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+   ```
+
+4. Run the container in detached mode (background):
+   ```bash
+   docker-compose -f docker-compose.prod.yaml --env-file .env.prod up -d
+   ```
+
+**Note:**
+
+- Ensure that all services are properly configured in `docker-compose.prod.yaml`.
+- Check container logs if any errors occur using:
+  ```bash
+  docker-compose -f docker-compose.prod.yaml logs
+  ```
+
 ## Resources
 
 Check out a few resources that may come in handy when working with NestJS:
